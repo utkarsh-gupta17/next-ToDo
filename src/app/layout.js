@@ -13,9 +13,11 @@ const inter = Inter({ subsets: ['latin'] })
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`inter.className flex flex-col h-screen`}>
         <Header />
+        <div className='mb-auto'>
         {children}
+        </div>
         <Footer/>
       </body>
     </html>
