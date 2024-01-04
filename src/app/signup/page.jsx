@@ -1,21 +1,21 @@
-import LoginForm from "@/components/Login";
+import SignupForm from "@/components/Signup";
 import Image from "next/image";
 export const metadata = {
-  title:"Login"
+  title:"SignUp"
 }
-const Form = () => {
+const Signup = () => {
   return (
     <div className="w-full flex flex-col md:flex-row  p-4 my-5 justify-center">
       <Image
         className="md:w-1/4"
-        src="/login.svg"
+        src="/signup.svg"
         alt="menu"
         width="500"
         height="500"
       />
-      <LoginForm />
+      <SignupForm />
     </div>
-  );
-};
+  )
+}
 
-export default Form;
+export default Signup

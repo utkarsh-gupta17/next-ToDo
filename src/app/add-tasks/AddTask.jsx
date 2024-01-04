@@ -5,12 +5,25 @@ import { useState } from "react";
 import { toast } from 'react-toastify';
 
 const AddTask = () => {
+
+
   const [task, setTask] = useState({
     title: "",
     content: "",
     status: "Pending",
     userId: "6595287627ae59272a2ccec4",
   });
+
+  const resetForm = ()=>{
+    setTask({
+      title: "",
+      content: "",
+      status: "Pending",
+      userId: "6595287627ae59272a2ccec4",
+    });
+  }
+
+
   const handleAddTask = async(event)=>{
     event.preventDefault();
     console.log(task);
@@ -26,7 +39,7 @@ const AddTask = () => {
         content: "",
         status: "Pending",
         userId: "6595287627ae59272a2ccec4",
-      })
+      });
     } catch (error) {
       console.log("error in sending task via addTask in axios");
       console.log(error);
@@ -38,7 +51,7 @@ const AddTask = () => {
   }
 
   return (
-    <div className="w-full flex flex-col md:flex-row  p-4 mx-auto my-5 justify-center ali">
+    <div className="w-full flex flex-col md:flex-row  p-4 mx-auto my-5 justify-center">
       <Image
         className="md:w-1/4"
         src="/add.svg"
@@ -46,8 +59,8 @@ const AddTask = () => {
         width="500"
         height="500"
       />
-      <form className="bg-white rounded-lg shadow-md p-6 md:w-1/3 mt-2" onSubmit={handleAddTask}>
-        <h2 className="text-2xl font-semibold mb-4">Add Task</h2>
+      <form className="bg-white rounded-lg shadow-md p-6 md:w-96 mt-2" onSubmit={handleAddTask}>
+        <h2 className="text-2xl font-semibold mb-4 text-center">Add Task</h2>
 
         <div className="mb-4">
           <label
@@ -124,6 +137,7 @@ const AddTask = () => {
 
         <button
           type="reset"
+          onClick={resetForm}
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md w-full mt-2"
         >
           Clear

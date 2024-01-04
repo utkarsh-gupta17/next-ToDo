@@ -12,9 +12,11 @@ const Header = () => {
 
   return (
     <nav className="flex flex-wrap items-center justify-between p-5 bg-blue-200 shadow-md">
-      <div className="flex">
-        <Image src="/todo.svg" alt="menu" width="40" height="25" />
-        <span className="text-3xl">Todo</span>
+      <div>
+        <Link href="/" className="flex">
+          <Image src="/todo.svg" alt="menu" width="40" height="25" />
+          <span className="text-3xl">Todo</span>
+        </Link>
       </div>
       <div className="flex md:hidden">
         <button onClick={toggleMenu}>
