@@ -16,9 +16,22 @@ const LoginForm = () => {
     });
   };
 
+  const handleLoginForm = (event)=>{
+    event.preventDefault();
+    console.log(login);
+    if(data.email.trim===""||data.email==null){
+      toast.info("Email is Required",{position:'top-center'});
+      return;
+    }
+    if(data.password.trim===""||data.password==null){
+      toast.info("Password is Required",{position:'top-center'});
+      return;
+    }
+  }
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 my-5">
-      <form className="bg-white rounded-lg shadow-md p-6">
+      <form className="bg-white rounded-lg shadow-md p-6" onSubmit={handleLoginForm}>
         <h2 className="text-2xl font-semibold mb-4 text-center">Login</h2>
 
         <div className="mb-4">

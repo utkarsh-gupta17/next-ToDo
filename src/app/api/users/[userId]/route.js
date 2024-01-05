@@ -1,5 +1,8 @@
 import { User } from "@/models/user";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from 'next/server'
+
+connectDB();
 
 export async function DELETE(request,{params}) {
 

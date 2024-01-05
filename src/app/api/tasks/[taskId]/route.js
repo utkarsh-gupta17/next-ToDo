@@ -1,5 +1,8 @@
 import { Task } from "@/models/task";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
+
+connectDB();
 
 // get a particular task
 export async function GET(request,{params}){

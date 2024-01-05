@@ -1,6 +1,9 @@
 import { User } from "@/models/user";
 import { NextResponse } from 'next/server'
-const { mongoose } = require("mongoose");
+import bcrypt, { hash, hashSync } from "bcryptjs";
+import { connectDB } from "@/utils/db";
+
+connectDB();
 
 export async function POST(request) {
   // fetch user data from request ki body
@@ -12,6 +15,10 @@ export async function POST(request) {
 
   // now save the object to database
   try {
+    user.password = bcrypt.hashSync(user.password,parseInt(process.env.BCRYPT_SALT));
+    // process.env se aane wala data string hota hai so parseInt humne use kiya hai to change into int
+    // hash ke saath await laga dena aage
+    // hashSync ke saath await lagane ki jarurat nhi hai
     const createdUser = await user.save();
     const res = await NextResponse.json(createdUser, { status: 201 });
     return res;
