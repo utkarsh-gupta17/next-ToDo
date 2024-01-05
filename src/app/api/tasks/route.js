@@ -2,7 +2,10 @@ import { Task } from "@/models/task";
 import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
 
-connectDB();
+async function connectWithDB(){
+  await connectDB();
+}
+connectWithDB();
 
 //get all tasks
 export async function GET(request){

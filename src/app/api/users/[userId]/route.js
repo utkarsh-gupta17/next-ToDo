@@ -2,7 +2,10 @@ import { User } from "@/models/user";
 import { connectDB } from "@/utils/db";
 import { NextResponse } from 'next/server'
 
-connectDB();
+async function connectWithDB(){
+  await connectDB();
+}
+connectWithDB();
 
 export async function DELETE(request,{params}) {
 

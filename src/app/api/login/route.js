@@ -4,7 +4,10 @@ import bcrypt, { hash, hashSync } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { connectDB } from "@/utils/db";
 
-connectDB();
+async function connectWithDB(){
+  await connectDB();
+}
+connectWithDB();
 
 export async function POST(request){
   const { email,password } = await request.json();
@@ -31,7 +34,8 @@ export async function POST(request){
     // now put token into the cookie
     const response = NextResponse.json({
       message:"Login Successful!",
-      success:true
+      success:true,
+      user:user
     });
 
     response.cookies.set("authToken",token,{expiresIn:"1d",httpOnly:true})

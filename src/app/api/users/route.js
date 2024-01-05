@@ -3,7 +3,10 @@ import { NextResponse } from 'next/server'
 import bcrypt, { hash, hashSync } from "bcryptjs";
 import { connectDB } from "@/utils/db";
 
-connectDB();
+async function connectWithDB(){
+  await connectDB();
+}
+connectWithDB();
 
 export async function POST(request) {
   // fetch user data from request ki body

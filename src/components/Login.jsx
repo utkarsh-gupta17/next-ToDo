@@ -1,12 +1,14 @@
 "use client";
+import UserContext from "@/context/UserContext";
 import { Login } from "@/services/userServices";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
 
-  const router = useRouter()
+  const router = useRouter();
+  const context = useContext(UserContext);
 
   const [login, setLogin] = useState({
     email: "",
@@ -36,10 +38,12 @@ const LoginForm = () => {
     }
 
     try {
-      const res = await Login(login);
-      console.log(res);
+      const result = await Login(login);
+      console.log(result);
       toast.success("Login Successful");
       // ab redirect kardo
+      context.setUser(result.user);
+
       router.push("/profile/user");
     } catch (error) {
       console.log(error);
