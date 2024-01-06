@@ -7,7 +7,7 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-    <div className="md:flex md:justify-center md:items-center md:gap-10 md:mt-2 mt-5">
+    <div className="md:flex md:justify-center md:items-center md:gap-10 md:mt-20 mt-5">
       <div className="md:flex md:justify-center md:items-center flex flex-col">
         <div class="text-center font-extrabold ">
           <p class="inline-block md:block md:text-4xl text-3xl">

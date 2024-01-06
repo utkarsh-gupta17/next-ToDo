@@ -14,14 +14,14 @@ const Task = ({ task,deleteTaskParent }) => {
   const { user } = useContext(UserContext);
 
   return (
-    <div className={`shadow-lg text-white rounded-md mt-3 ${
+    <div className={`shadow-lg w-full md:w-auto relative text-white rounded-md mt-3 ${
       task.status === "Pending" ? "bg-blue-500" : "bg-green-600"}
       `}>
       <div className='p-5'>
         <div className="flex justify-between">
           <h1 className='text-2xl font-medium'>{task.title}</h1>
-          <span onClick={()=>{deletekardo(task._id)}} className='shadow-lg bg-gray-200 hover:bg-red-500 cursor-pointer rounded-full justify-center items-center flex w-5 h-5'>
-          <Image  src="/closeTask.svg" alt="closeTask" width="25" height="25"/>
+          <span onClick={()=>{deletekardo(task._id)}} className='absolute -top-2 -right-2 shadow-lg bg-gray-200 hover:bg-red-500 cursor-pointer rounded-full justify-center items-center flex w-7 h-7'>
+          <Image src="/closeTask.svg" alt="closeTask" width="25" height="25"/>
           </span>
         </div>
         <p className='font-normal'>{task.content}</p>
