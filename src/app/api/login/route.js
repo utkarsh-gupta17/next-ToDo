@@ -38,7 +38,7 @@ export async function POST(request){
       user:user
     });
 
-    response.cookies.set("authToken",token,{expiresIn:"1d",httpOnly:true})
+    response.cookies.set("authToken",token,{expiresIn:"60*60",httpOnly:true})
 
     console.log(user);
     console.log(token);

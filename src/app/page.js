@@ -1,11 +1,13 @@
+import UserPage from "./profile/user/page";
+
 export const metadata = {
-  title:"Home:Work Manager"
+  title:"Home"
 };
 
 export default function Home() {
   return (
     <>
-    <h1>Hello World</h1>
+    <UserPage/>
     </>
   )
 }
