@@ -27,7 +27,7 @@ export async function GET(request){
 // create a new tasks
 export async function POST(request){
   // fetch data from request ki body
-  const { title,content,userId } = await request.json();
+  const { title,content,userId,status } = await request.json();
 
   // fetching logged in user data taaki uski id use kar sake for making a new post corresponding to him
   const authToken = request.cookies.get("authToken")?.value;
@@ -37,7 +37,7 @@ export async function POST(request){
   try {
     // create a new object to be saved in the DB
     const task = new Task({
-      title:title,content:content,userId:data._id
+      title:title,content:content,userId:data._id,status,
     });
     console.log(task);
     const createdTask = await task.save();

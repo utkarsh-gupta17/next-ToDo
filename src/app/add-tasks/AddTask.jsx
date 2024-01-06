@@ -148,12 +148,6 @@ const AddTask = () => {
         >
           Add Task
         </button>
-        <p className="mt-4 text-sm text-gray-400 text-center">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-blue-500">
-            Register
-          </a>
-        </p>  
         {/* {JSON.stringify(task)} */}
       </form>
     </div>

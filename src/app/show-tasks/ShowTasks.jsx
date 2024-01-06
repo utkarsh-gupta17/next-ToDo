@@ -1,8 +1,10 @@
 "use client";
 import UserContext from '@/context/UserContext';
-import { showMyTask } from '@/services/taskServices';
+import { deleteTask, showMyTask } from '@/services/taskServices';
 import React, { useContext, useEffect, useState } from 'react'
 import Task from './Task';
+import { toast } from "react-toastify";
+
 
 const ShowTasks = () => {
 
@@ -26,6 +28,21 @@ const ShowTasks = () => {
       loadTasks(context.user._id);
     }
   }, [context.user]);
+
+  async function deleteTaskParent(taskId){
+    try {
+      const result = await deleteTask(taskId);
+      console.log(result);
+      // after deletion, ui par se hata do deleted task ko
+      const newTask = tasks.filter(item=>item._id!=taskId);
+      setTasks(newTask);
+      toast.success("Task Deleted Successfully!");
+    } catch (error) {
+      console.log(error);
+      toast.error("Error in Deleting Task");
+    }
+
+  }
   
 
   return (
@@ -34,7 +51,7 @@ const ShowTasks = () => {
         <h1 className="text-3xl text-center mb-2">My Tasks ( {tasks.length} )</h1>
         {
           tasks.map((t)=>(
-            <Task task={t} key={t._id}/>
+            <Task task={t} key={t._id} deleteTaskParent={deleteTaskParent}/>
           ))
         }
       </div>

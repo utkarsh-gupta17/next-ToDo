@@ -5,7 +5,12 @@ export async function addTask(task){
   return result;
 }
 
-export async function showMyTask(userId){
-  const result = await httpAxios.get(`/api/users/${userId}/tasks`).then((response)=>response.data);
+export async function showMyTask(taskId){
+  const result = await httpAxios.get(`/api/users/${taskId}/tasks`).then((response)=>response.data);
+  return result;
+}
+
+export async function deleteTask(taskId){
+  const result = await httpAxios.delete(`/api/tasks/${taskId}`).then((response)=>response.data);
   return result;
 }
