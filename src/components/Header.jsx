@@ -105,7 +105,7 @@ const Header = () => {
             <button
               href="#"
               onClick={toggle_logout}
-              className="toggle hidden md:flex w-full md:w-auto px-4 py-2 text-right bg-blue-900 hover:bg-blue-500 text-white rounded"
+              className="toggle hidden md:flex md:w-full px-4 py-2 text-right bg-blue-900 hover:bg-blue-500 text-white rounded"
             >
               Logout
             </button>

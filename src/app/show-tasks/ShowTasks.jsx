@@ -4,6 +4,7 @@ import { deleteTask, showMyTask } from '@/services/taskServices';
 import React, { useContext, useEffect, useState } from 'react'
 import Task from './Task';
 import { toast } from "react-toastify";
+import Swal from 'sweetalert2'
 
 
 const ShowTasks = () => {
@@ -30,18 +31,35 @@ const ShowTasks = () => {
   }, [context.user]);
 
   async function deleteTaskParent(taskId){
-    try {
-      const result = await deleteTask(taskId);
-      console.log(result);
-      // after deletion, ui par se hata do deleted task ko
-      const newTask = tasks.filter(item=>item._id!=taskId);
-      setTasks(newTask);
-      toast.success("Task Deleted Successfully!");
-    } catch (error) {
-      console.log(error);
-      toast.error("Error in Deleting Task");
-    }
 
+    Swal.fire({
+      title: "Do you want to delete this Task?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Task Deleted!", "", "success");
+        async function callkaro(){
+          try {
+            const result = await deleteTask(taskId);
+            console.log(result);
+            // after deletion, ui par se hata do deleted task ko
+            const newTask = tasks.filter(item=>item._id!=taskId);
+            setTasks(newTask);
+            // toast.success("Task Deleted Successfully!");
+          } catch (error) {
+            console.log(error);
+            toast.error("Error in Deleting Task");
+          }
+        }
+        callkaro();
+      } else if (result.isDenied) {
+        Swal.fire("Task Not Deleted", "", "info");
+      }
+    });
   }
   
 
