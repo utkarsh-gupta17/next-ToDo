@@ -1,6 +1,7 @@
 import { Task } from "@/models/task";
 import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
 async function connectWithDB(){
   await connectDB();
@@ -27,11 +28,16 @@ export async function GET(request){
 export async function POST(request){
   // fetch data from request ki body
   const { title,content,userId } = await request.json();
+
+  // fetching logged in user data taaki uski id use kar sake for making a new post corresponding to him
+  const authToken = request.cookies.get("authToken")?.value;
+  const data = jwt.verify(authToken,process.env.JWT_KEY);
+
   console.log(title,content,userId);
   try {
     // create a new object to be saved in the DB
     const task = new Task({
-      title:title,content:content,userId:userId
+      title:title,content:content,userId:data._id
     });
     console.log(task);
     const createdTask = await task.save();

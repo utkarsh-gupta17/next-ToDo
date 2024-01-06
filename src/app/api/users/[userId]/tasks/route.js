@@ -8,10 +8,10 @@ async function connectWithDB(){
 connectWithDB();
 
 export async function GET(request,{params}){
-  const id = params.userId;
+  const {userId} = params;
   try {
     const allTasks = await Task.find({
-      userId:id
+      userId:userId,
     });
     console.log("successfully retrieved all tasks for the particular user");
     return NextResponse.json(allTasks); 

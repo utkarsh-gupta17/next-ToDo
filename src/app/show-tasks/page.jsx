@@ -1,15 +1,14 @@
-import React from 'react'
+import ShowTasks from "./ShowTasks";
 
 export const metadata = {
   title:"Show Tasks"
 };
 
-const page = () => {
+const showTaskPage = () => {
+
   return (
-    <div>
-      Show Tasks
-    </div>
+    <ShowTasks/>
   )
 }
 
-export default page
+export default showTaskPage
