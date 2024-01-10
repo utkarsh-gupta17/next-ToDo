@@ -21,7 +21,7 @@ const Task = ({ task,deleteTaskParent }) => {
         <div className="flex justify-between">
           <h1 className='text-2xl font-medium'>{task.title}</h1>
           <span onClick={()=>{deletekardo(task._id)}} className='absolute -top-2 -right-2 shadow-lg bg-gray-200 hover:bg-red-500 cursor-pointer rounded-full justify-center items-center flex w-7 h-7'>
-          <Image src="/closeTask.svg" alt="closeTask" width="25" height="25"/>
+          <Image src="/closetask.svg" alt="closeTask" width="25" height="25"/>
           </span>
         </div>
         <p className='font-normal'>{task.content}</p>
